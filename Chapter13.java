@@ -1,32 +1,3 @@
-/* WordList.txt
-leaf
-corn
-ordinary
-door
-piano
-aardvark
-quick
-icicle
-rope
-great
-steam
-hat
-tornado
-jelly
-under
-move
-victory
-beard
-white
-night
-x-ray
-floor
-yawn
-eager
-zipper
-kitchen
-*/
-
 package chapter13;
 
 import java.util.*;

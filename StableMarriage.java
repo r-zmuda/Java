@@ -1,24 +1,3 @@
-//This program is dependent on two separate .txt files to function correctly.
-//Use MANPATH and FEMPATH to change the file paths, if necessary.
-//Syntax is "<String>: <int> <int> <int> ..."
-//Constraint: Names must not contain spaces.
-//Constraint: Both files a.k.a. "groups" must contain the same amount of lines a.k.a. "people".
-//Constraint: Each group member must rate every member of the target group in order of preference.
-
-/* Data for FileMale.txt
-Man1: 4 1 2 3
-Man2: 2 3 1 4
-Man3: 2 4 3 1
-Man4: 3 1 4 2
-*/
-
-/* Data for FileFemale.txt
-Woman1: 4 1 3 2
-Woman2: 1 3 2 4
-Woman3: 1 2 3 4
-Woman4: 4 1 3 2
-*/
-
 package chapter11;
 
 import java.util.*;
@@ -33,31 +12,13 @@ public class StableMarriage {
 	// Main
 	public static void main(String[] args) throws FileNotFoundException {
 		// Declarations
-		ArrayList<ArrayList<String>> male = new ArrayList<ArrayList<String>>(); // Stores
-																				// men
-																				// and
-																				// their
-																				// preferences
-		ArrayList<ArrayList<String>> female = new ArrayList<ArrayList<String>>(); // Stores
-																					// women
-																					// and
-																					// their
-																					// preferences
-		ArrayList<String> maleName = new ArrayList<String>(); // Stores names of
-																// males
-		ArrayList<String> femaleName = new ArrayList<String>(); // Stores names
-																// of females
-		ArrayList<String> freeMale = new ArrayList<String>(); // Contains
-																// unmarried men
-		ArrayList<Integer> partnerIndex = new ArrayList<Integer>(); // Stores
-																	// pairings
-																	// based on
-																	// index and
-																	// value
-		ArrayList<String> partnerName = new ArrayList<String>(); // Stores
-																	// females'
-																	// partner
-																	// names
+		ArrayList<ArrayList<String>> male = new ArrayList<ArrayList<String>>(); // Stores men and their preferences
+		ArrayList<ArrayList<String>> female = new ArrayList<ArrayList<String>>(); // Stores women and their preferences
+		ArrayList<String> maleName = new ArrayList<String>(); // Stores names of males
+		ArrayList<String> femaleName = new ArrayList<String>(); // Stores names of females
+		ArrayList<String> freeMale = new ArrayList<String>(); // Contains unmarried men
+		ArrayList<Integer> partnerIndex = new ArrayList<Integer>(); // Stores pairings based on index and value
+		ArrayList<String> partnerName = new ArrayList<String>(); // Stores females' partner names
 		File fileM = new File(MANPATH); // Accepts men from FileMale.txt
 		File fileF = new File(FEMPATH); // Accepts women FileFemale.txt
 		Scanner scannerM = new Scanner(fileM); // Scanner for FileMale.txt
@@ -158,8 +119,7 @@ public class StableMarriage {
 
 			// Male proposes
 			System.out.println(matchingMale + " proposes to " + matchingWoman + ".");
-			if (partnerIndex.get(womanIndex) == -1) { // If target woman is
-														// single
+			if (partnerIndex.get(womanIndex) == -1) { // If target woman is single
 				// Congratulations, you are now married
 				System.out.println(matchingWoman + " is single. She accepts.");
 				partnerName.set(womanIndex, matchingMale);
@@ -167,7 +127,7 @@ public class StableMarriage {
 				freeMale.remove(0);
 				System.out.println(matchingMale + " marries " + matchingWoman + ".");
 			} else { // Target woman is married
-						// Declarations
+				// Declarations
 				String currentPartner = partnerName.get(womanIndex);
 
 				// Get the index of the woman's current partner
@@ -194,8 +154,7 @@ public class StableMarriage {
 				System.out.println(matchingWoman + " ranks " + currentPartner + " as " + currentRank + ".");
 
 				// Check woman's preferences
-				if (manRank < currentRank) { // Woman values proposer more than
-												// current partner
+				if (manRank < currentRank) { // Woman values proposer more than current partner
 					System.out.println(matchingWoman + " leaves " + currentPartner + " for " + matchingMale + ".");
 					System.out.println(currentPartner + " is now single.");
 					partnerName.set(womanIndex, male.get(manIndex).get(0));

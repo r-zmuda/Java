@@ -2,7 +2,7 @@ package chapter03;
 
 import java.math.*;
 
-public class Programming_Project_C3_2 {
+public class ChapterThree {
 	public static void main(String[] args) {
 		// Variables
 		double interestRate = 0.065, balance = 5000, deposit = 500;
